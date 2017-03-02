@@ -6,11 +6,22 @@
 </header>
 
 <body>
-    <canvas id="myCanvas" width="128" height="128">
-        Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
-    </canvas>
-    <button id="flip">Flip</button>
-    <script src="coinflip.js"></script>
+    <div>
+        <h1>Easy Challenge</h1>
+        <canvas id="myCanvas" width="128" height="128">
+            Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
+        </canvas>
+        <button id="flip">Flip</button>
+        <script src="coinflip.js"></script>
+    </div>
+    <div>
+        <h1>Medium Challenge</h1>
+        <span>Shift by: <input id="shiftNum" type="number" min="0" max="25" value="3" /></span> <br />
+
+        <span><input id="plainText" type="text" value="THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG" class="longInputText" /><button id="encrypt">Encrypt</button></span> <br />
+        <span><input id="encryptedText" type="text" value="QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD" class="longInputText" /><button id="decrypt">Decrypt</button></span> <br />
+        <script src="caesarDecrypt.js"></script>
+    </div>
 </body>
 
 </html>
