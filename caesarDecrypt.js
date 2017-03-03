@@ -20,6 +20,7 @@ function encrypt() {
     var shift = parseInt(shiftInput.value);
 
     var plainText = plainInput.value.toUpperCase();
+    console.log(plainText);
 
     if (shift == 0) {
         shift = parseInt(25 * Math.random()) + 1;
@@ -35,6 +36,7 @@ function decrypt() {
     var shift = parseInt(shiftInput.value);
 
     var encryptedText = encryptedInput.value.toUpperCase();
+    console.log(encryptedText);
 
     if (shift == 0) {
         shift = findShift(encryptedText);
