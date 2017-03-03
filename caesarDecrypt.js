@@ -1,3 +1,6 @@
+var codeA = 'A'.charCodeAt(0);
+var codeZ = 'Z'.charCodeAt(0);
+
 var encryptButton = document.getElementById('encrypt');
 encryptButton.onclick = encrypt;
 
@@ -16,8 +19,7 @@ Number.prototype.mod = function(n) {
 function encrypt() {
     var shift = parseInt(shiftInput.value);
 
-    var plainText = plainInput.value;
-    var encryptedText = encryptedInput.value;
+    var plainText = plainInput.value.toUpperCase();
 
     if (shift == 0) {
         shift = parseInt(25 * Math.random()) + 1;
@@ -32,8 +34,7 @@ function encrypt() {
 function decrypt() {
     var shift = parseInt(shiftInput.value);
 
-    var plainText = plainInput.value;
-    var encryptedText = encryptedInput.value;
+    var encryptedText = encryptedInput.value.toUpperCase();
 
     if (shift == 0) {
         shift = findShift(encryptedText);
@@ -44,9 +45,6 @@ function decrypt() {
     var string = shiftBy(encryptedText, shift);
     plainInput.value = string;
 }
-
-var codeA = 'A'.charCodeAt(0);
-var codeZ = 'Z'.charCodeAt(0);
 
 function shiftBy(string, shift) {
     var out = '';
@@ -67,20 +65,15 @@ function findShift(string) {
     var maxIndex = 0;
     for (var i = 0; i < 26; i++) {
         var text = shiftBy(string, i);
-        console.log(text);
+        // console.log(text);
         arr[i] = 0;
 
         for (var j = 0; j < list10000.length; j++) {
-            var regex = new RegExp('[^a-zA-Z0-9](' + list10000[j] + ')(?=[^a-zA-Z0-9]|$)', 'i');
+            var regex = new RegExp('([^a-zA-Z0-9]|^)(' + list10000[j] + ')(?=[^a-zA-Z0-9]|$)', 'i');
             var count = (text.match(regex) || []).length;
 
             arr[i] += count;
-            if (count > 0) {
-                console.log(regex);
-            }
         }
-
-        console.log(arr[i]);
 
         if (arr[maxIndex] < arr[i]) {
             maxIndex = i;
