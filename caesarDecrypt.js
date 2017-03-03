@@ -1,6 +1,8 @@
 var codeA = 'A'.charCodeAt(0);
 var codeZ = 'Z'.charCodeAt(0);
 
+var decryptStatus = document.getElementById('decryptStatus');
+
 var encryptButton = document.getElementById('encrypt');
 encryptButton.onclick = encrypt;
 
@@ -18,9 +20,9 @@ Number.prototype.mod = function(n) {
 
 function encrypt() {
     var shift = parseInt(shiftInput.value);
+    decryptStatus.innerText = '';
 
     var plainText = plainInput.value.toUpperCase();
-    console.log(plainText);
 
     if (shift == 0) {
         shift = parseInt(25 * Math.random()) + 1;
@@ -34,12 +36,14 @@ function encrypt() {
 
 function decrypt() {
     var shift = parseInt(shiftInput.value);
+    decryptStatus.innerText = '';
 
     var encryptedText = encryptedInput.value.toUpperCase();
-    console.log(encryptedText);
 
     if (shift == 0) {
+        decryptStatus.innerText = 'Please wait...';
         shift = findShift(encryptedText);
+        decryptStatus.innerText = 'The shift is probably ' + shift + '.';
     } else {
         shift = shift.mod(26);
     }
